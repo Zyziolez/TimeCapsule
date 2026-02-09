@@ -1,0 +1,34 @@
+[18:40:02.634] [INFO] storybook v10.2.8
+[18:40:03.516] [DEBUG] Getting package.json info for C:/Users/theho/Desktop/nauka/projekty-portfolio/time-capsule/packages/ui/package.json...
+[18:40:04.086] [WARN] Using CommonJS in your main configuration file is deprecated with Vite.
+- Refer to the migration guide at https://github.com/storybookjs/storybook/blob/next/MIGRATION.md#commonjs-with-vite-is-deprecated
+[18:40:04.858] [INFO] Starting...
+[18:40:05.243] [DEBUG] Starting preview..
+[18:40:05.253] [WARN] 🚨 Unable to index ./src/components/Alert/Alert.stories.tsx:
+  NoMetaError: CSF: missing default export C:/Users/theho/Desktop/nauka/projekty-portfolio/time-capsule/packages/ui/src/components/Alert/Alert.stories.tsx (line 1, col 0)
+
+More info: https://storybook.js.org/docs/writing-stories?ref=error#default-export
+    at CsfFile.parse (file:///C:/Users/theho/Desktop/nauka/projekty-portfolio/time-capsule/packages/ui/node_modules/storybook/dist/_node-chunks/chunk-R5K6MN7N.js:456:13)
+    at Object.createIndex (file:///C:/Users/theho/Desktop/nauka/projekty-portfolio/time-capsule/packages/ui/node_modules/storybook/dist/core-server/presets/common-preset.js:1797:81)
+    at async _StoryIndexGenerator.extractStories (file:///C:/Users/theho/Desktop/nauka/projekty-portfolio/time-capsule/packages/ui/node_modules/storybook/dist/core-server/index.js:5909:23)
+    at async file:///C:/Users/theho/Desktop/nauka/projekty-portfolio/time-capsule/packages/ui/node_modules/storybook/dist/core-server/index.js:5830:39
+    at async Promise.all (index 0)
+    at async Promise.all (index 1)
+    at async _StoryIndexGenerator.updateExtracted (file:///C:/Users/theho/Desktop/nauka/projekty-portfolio/time-capsule/packages/ui/node_modules/storybook/dist/core-server/index.js:5818:5)
+    at async _StoryIndexGenerator.ensureExtracted (file:///C:/Users/theho/Desktop/nauka/projekty-portfolio/time-capsule/packages/ui/node_modules/storybook/dist/core-server/index.js:5853:5)
+    at async _StoryIndexGenerator.initialize (file:///C:/Users/theho/Desktop/nauka/projekty-portfolio/time-capsule/packages/ui/node_modules/storybook/dist/core-server/index.js:5814:5)
+    at async file:///C:/Users/theho/Desktop/nauka/projekty-portfolio/time-capsule/packages/ui/node_modules/storybook/dist/core-server/presets/common-preset.js:1837:10
+[18:40:05.257] [ERROR] Failed to build the preview
+[18:40:05.259] [ERROR] Error: Unable to index ./src/components/Alert/Alert.stories.tsx
+    at _StoryIndexGenerator.getIndexAndStats (file:///C:/Users/theho/Desktop/nauka/projekty-portfolio/time-capsule/packages/ui/node_modules/storybook/dist/core-server/index.js:6082:15)
+    at async _StoryIndexGenerator.getIndex (file:///C:/Users/theho/Desktop/nauka/projekty-portfolio/time-capsule/packages/ui/node_modules/storybook/dist/core-server/index.js:6071:13)
+    at async getOptimizeDeps (file:///C:/Users/theho/Desktop/nauka/projekty-portfolio/time-capsule/packages/ui/node_modules/@storybook/builder-vite/dist/index.js:1862:15)
+    at async createViteServer (file:///C:/Users/theho/Desktop/nauka/projekty-portfolio/time-capsule/packages/ui/node_modules/@storybook/builder-vite/dist/index.js:1888:19)
+    at async Module.start (file:///C:/Users/theho/Desktop/nauka/projekty-portfolio/time-capsule/packages/ui/node_modules/@storybook/builder-vite/dist/index.js:1923:17)
+    at async storybookDevServer (file:///C:/Users/theho/Desktop/nauka/projekty-portfolio/time-capsule/packages/ui/node_modules/storybook/dist/core-server/index.js:7207:83)
+    at async buildOrThrow (file:///C:/Users/theho/Desktop/nauka/projekty-portfolio/time-capsule/packages/ui/node_modules/storybook/dist/core-server/index.js:4504:12)
+    at async buildDevStandalone (file:///C:/Users/theho/Desktop/nauka/projekty-portfolio/time-capsule/packages/ui/node_modules/storybook/dist/core-server/index.js:7577:66)
+    at async withTelemetry (file:///C:/Users/theho/Desktop/nauka/projekty-portfolio/time-capsule/packages/ui/node_modules/storybook/dist/_node-chunks/chunk-KIOKJLL5.js:218:12)
+    at async dev (file:///C:/Users/theho/Desktop/nauka/projekty-portfolio/time-capsule/packages/ui/node_modules/storybook/dist/bin/core.js:2734:3)
+[18:40:05.260] [WARN] Broken build, fix the error above.
+You may need to refresh the browser.

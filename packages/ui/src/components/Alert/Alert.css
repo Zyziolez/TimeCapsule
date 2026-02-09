@@ -1,0 +1,20 @@
+.ui-alert{
+    align-items: center;
+    font-family: var(--font-primary);
+    background-color: var(--background-primary);
+    box-shadow: inset 8px 8px 20px var(--shadow-one), inset -8px -8px 20px var(--shadow-two);
+    border: none;
+    border-radius: 12px;
+    color: var(--text-drak-gray);
+    padding: 2rem 2rem;
+    text-align: center;
+    max-width: 20rem;
+}
+.ui-alert h3{
+    color: #000;
+    margin-bottom: 1rem;
+    font-weight: bold;
+}
+.ui-alert p{
+    margin-bottom: 2rem;
+}
