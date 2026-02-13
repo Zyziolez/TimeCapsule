@@ -21,5 +21,6 @@ export const Secondary: Story = {
   args: {
     label: 'Anuluj',
     variant: 'secondary',
+    width: 'not-wide'
   },
 };

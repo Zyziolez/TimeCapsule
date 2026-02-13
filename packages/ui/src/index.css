@@ -10,10 +10,12 @@
   --shadow-two: #FFF;
   --background-secondary: rgb(244, 246, 247);
   --text-drak-gray: #6e7f8d;
+  --text-gray: #9aa8b3;
   --text-p: 1rem;    
   --text-h3: 1.25rem;     
   --text-h2: 1.5rem;      
   --text-h1: 2rem;
+  --radius-universal: 3rem;
 }
 
 body {
@@ -29,6 +31,6 @@ h2{
 h3{
     font-size: var(--text-h3);
 }
-p{
+p, label{
     font-size: var(--text-p);
 }

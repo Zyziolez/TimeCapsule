@@ -4,16 +4,16 @@ import { Alert } from './Alert';
 const meta: Meta<typeof Alert> = {
   title: 'Components/Alert',
   component: Alert,
-  tags: ['autodocs'], 
-};
+  tags: ['autodocs']
+}
 
 export default meta;
-type Story = StoryObj<typeof Alert>;
+type Story = StoryObj<typeof Alert>
 
 export const Primary: Story = {
   args: {
     title: 'Wyślij Kapsułę',
     message: 'Twoja kapsuła czasu została pomyślnie wysłana!',
-    alertType: 'reload',
-  },
-};
+    alertType: 'reload'
+  }
+}

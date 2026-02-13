@@ -1,0 +1,35 @@
+.ui-memory-card{
+    background-color: var(--background-primary);
+    box-shadow: 8px 8px 20px var(--shadow-one), -8px -8px 20px var(--shadow-two);
+    border: none;
+    border-radius: var(--radius-universal);
+    color: var(--text-drak-gray);
+    padding: 1rem 2rem;
+    width: 100%;
+}
+
+.ui-memory-card h1{
+    color: black;
+    
+}
+
+.memory-card-header{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    line-height: 0.5rem;
+}
+.memory-card-status{
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 50%;
+    background-color: var(--shadow-one);
+    margin-right: 1rem;
+}
+.memory-card-status.unlocked{
+    background-color: green;
+}
+.memory-card-status.locked{
+    background-color: red;
+}
+
