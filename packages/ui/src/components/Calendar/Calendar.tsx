@@ -1,4 +1,6 @@
 import React, {useEffect, useState} from 'react'
+import {createPortal} from 'react-dom'
+import {CalendarEventInfo} from './CalendarEventInfo'
 import {Button} from '../Button/Button'
 import { 
   format, 
@@ -14,17 +16,24 @@ import {
 } from 'date-fns'
 import './Calendar.css'
 
+interface Event {
+    eventId: string,
+    eventDate: string
+}
+
 interface CalendarProps {
     selectedStartingDate: Date,
     onDateChange?: (date: Date) => void,
-    formatedDatesArray?: string[]
+    formatedDatesArray?: Event[]
 }
 
 export const Calendar = ({  selectedStartingDate, onDateChange, formatedDatesArray = [] }: CalendarProps) => {
     const [displayedDate, setDisplayedDate] = useState(selectedStartingDate)
     const start = startOfWeek(startOfMonth(displayedDate), { weekStartsOn: 1 })
     const end = endOfWeek(endOfMonth(displayedDate), { weekStartsOn: 1 })
-   const allDays = eachDayOfInterval({ start, end })
+    const allDays = eachDayOfInterval({ start, end })
+    const [hoveredDayRect, setHoveredDayRect] = useState<DOMRect | null>(null);
+    const [hoveredDayData, setHoveredDayData] = useState<Event[] | null>(null);
 
     const zmienMiesiac= (add: number) => {
         // let newMonth =  addMonths(displayedDate, add)
@@ -40,6 +49,17 @@ export const Calendar = ({  selectedStartingDate, onDateChange, formatedDatesArr
         setDisplayedDate(day)
         // onDateChange?.(day)
     }
+    const handleMouseEnter = (e: React.MouseEvent<HTMLButtonElement>,events: Event[]) => {
+
+        setHoveredDayRect(e.currentTarget.getBoundingClientRect());
+        setHoveredDayData(events);
+        
+        
+    };
+    const handleMouseLeave = () => {
+        setHoveredDayRect(null);
+        setHoveredDayData(null);
+    };
 
     return (
         <div className="calendar">
@@ -59,8 +79,15 @@ export const Calendar = ({  selectedStartingDate, onDateChange, formatedDatesArr
 
                 {allDays.map(day => {
                     let formatDate = format(day, 'yyyy-MM-dd')
-                    let specialCount = formatedDatesArray.reduce((a, v) => (isEqual(formatDate, v) ? a + 1 : a), 0)
-                    console.log(specialCount)
+                    let specialCount = formatedDatesArray.reduce((a, v) => (isEqual(formatDate, v.eventDate) ? a + 1 : a), 0)
+                    let hasEvent = false;
+                    let eventsArray = formatedDatesArray.filter(v => isEqual(formatDate, v.eventDate))
+
+                    if(specialCount > 0){
+                        hasEvent = true;
+
+                    }
+
                     return(
                         (
                     <button
@@ -70,15 +97,20 @@ export const Calendar = ({  selectedStartingDate, onDateChange, formatedDatesArr
                             ${!isSameMonth(day, displayedDate) ? 'outside' : ''} 
                             ${isSameDay(day, displayedDate) ? 'selected' : ''}`
                         }
-                    >
+                        onMouseEnter={(e) => hasEvent && handleMouseEnter(e, eventsArray)}
+                        onMouseLeave={handleMouseLeave}
+                        >
                         {format(day, 'd')}
                         <div className='clendar-events-mark' >
-                            {}
+                            {Array.from({ length: specialCount }).map((_, i) => (
+                                <div key={i} className='calendar-event-circle' ></div>
+                            ))}
                         </div>
                     </button>
                 )
                     )
                 })}
+                {hoveredDayRect && hoveredDayData && createPortal(<CalendarEventInfo events={hoveredDayData} position={hoveredDayRect} />, document.body)}
             </div>
         </div>
     )

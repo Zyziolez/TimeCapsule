@@ -16,6 +16,14 @@ type Story = StoryObj<typeof Calendar>
 export const basic :Story = {
     args: {
         selectedStartingDate: new Date(),
-        formatedDatesArray : [format(new Date(2026, 1, 3), 'yyyy-MM-dd'), format(new Date(2026, 1, 24), 'yyyy-MM-dd'), format(new Date(2026, 1, 16), 'yyyy-MM-dd')]
+        formatedDatesArray : [
+            {eventId: '2', eventDate: format(new Date(2026, 1, 24), 'yyyy-MM-dd')},
+            {eventId: '3', eventDate: format(new Date(2026, 1, 16), 'yyyy-MM-dd')},
+            {eventId: '4', eventDate: format(new Date(2026, 1, 16), 'yyyy-MM-dd')},
+            {eventId: '5', eventDate: format(new Date(2026, 1, 16), 'yyyy-MM-dd')},
+            {eventId: '6', eventDate: format(new Date(2026, 1, 16), 'yyyy-MM-dd')}
+
+
+        ]
     }
 }

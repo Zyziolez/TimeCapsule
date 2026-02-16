@@ -2,7 +2,7 @@
     align-items: center;
     font-family: var(--font-primary);
     background-color: var(--background-primary);
-    box-shadow: 18px 18px 30px var(--shadow-one), -18px -18px 30px var(--shadow-two);
+    box-shadow: 8px 8px 20px var(--shadow-one), -8px -8px 20px var(--shadow-two);
     border: none;
     border-radius: var(--radius-universal);
     color: #000;

@@ -2,7 +2,7 @@
     width: 100%;
     padding: 2rem;
     background: var(--background-primary);
-    border-radius: var(--radius-universal);
+    /* border-radius: var(--radius-universal); */
 }
 .calendar-header{
     text-align: center;
@@ -16,7 +16,8 @@
 
 .calendar-grid {
     display: grid;
-    grid-template-columns: repeat(7, 1fr); 
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: auto repeat(6, 1fr);
     gap: 5px;
     text-align: center;
 }
@@ -28,10 +29,14 @@
     cursor: pointer;
     font-family: var(--font-main);
     aspect-ratio: 1/1;
+    padding-top: 1rem;
 }
 
 .day-cell.outside {
     color: rgba(255, 255, 255, 0.2); 
+}
+.day-cell.outside{
+    visibility: hidden;
 }
 
 .day-cell.selected {
@@ -44,4 +49,33 @@
     font-weight: bold;
     font-size: var(--text-xs);
     margin-bottom: 10px;
+}
+.clendar-events-mark{
+    height: 1rem;
+    /* background-color: red; */
+    display: flex;
+    flex-direction: row;
+        align-items: center;
+    justify-content: center;
+}
+.calendar-event-circle{
+    width: 0.5rem;
+    height: 0.5rem;
+    background-color: var(--color-primary);
+    border-radius: 50%;
+    margin: 0 1px;
+
+    background-color: rgb(219, 97, 31);
+}
+.event-info-container{
+    background-color: var(--background-primary);
+    border-radius: calc(var(--radius-universal) - 0.1rem);
+    box-shadow: inset 8px 8px 20px var(--shadow-one), inset -8px -8px 20px var(--shadow-two);
+    max-width: 20rem;
+    /* overflow: hidden; */
+    padding: 1.5rem 2rem;
+    text-align: center;
+}
+.event-info-container p{
+    margin-top: 0;
 }
