@@ -12,12 +12,18 @@ interface MemoryCardProps {
 }
 
 export const MemoryCard = ({ title, state='locked', textContent, openDate, onClick, author='Unknown', isPublic }: MemoryCardProps) => {
+    state = openDate > new Date() ? 'locked' : 'unlocked';
 return(
         <div className={`ui-memory-card ${state}`} onClick={onClick}>
-        <div className='memory-card-header' ><div className={`memory-card-status ${state}`} ></div>  <h1>{openDate.toLocaleDateString()}</h1></div>
-        <h2>{title}</h2>
-        {state === 'unlocked' ? <p>{textContent}</p> : <p>...</p>}
+        <div className='memory-card-header' >
+            <div className={`memory-card-status ${state}`} ></div>
+            <p>{openDate.toLocaleDateString()}</p>
+        </div>
+        <h3 className='memory-card-title' >{title}</h3>
+        <div className='memory-card-info' >
+            {state === 'unlocked' ? <p>{textContent}</p> : <p>...</p>}
         <p>{author && `Autor: ${author}`}</p>
+        </div>
         </div>
 )
 }

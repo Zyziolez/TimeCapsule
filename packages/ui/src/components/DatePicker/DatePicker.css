@@ -1,57 +1,113 @@
+.datepicker-background {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
 .datepicker {
-    width: 21rem;
+    width: 25rem;
     padding: 2rem;
-    background: var(--background-primary);
+    max-width: calc(100% - 2rem);
+    background-color: var(--background-primary);
     border-radius: var(--radius-universal);
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
 }
-.weekday{
-    font-weight: lighter;
-    color: var(--text-gray)
-}
-.datepicker-header{
-    text-align: center;
+
+.datepicker-header {
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     gap: 1rem;
-    margin-bottom: 1rem;
+}
+
+.datepicker-header h3 {
+    flex: 1;
+    text-align: center;
+    margin: 0;
+    color: #000;
+    font-weight: 600;
 }
 
 .datepicker-grid {
     display: grid;
-    grid-template-columns: repeat(7, 1fr); 
-    gap: 5px;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 0.5rem;
     text-align: center;
-    margin-bottom: 1rem;
-}
-
-.day-cell {
-    padding: 10px 0;
-    border: none;
-    background: none;
-    cursor: pointer;
-    font-family: var(--font-main);
-    aspect-ratio: 1/1;
-}
-
-.day-cell.outside {
-    color: rgba(255, 255, 255, 0.2); 
-}
-
-.day-cell.selected {
-    /* background: var(--color-primary); */
-    /* color: white; */
-    font-weight: bold;
-    color: black;
-    border-radius: 50%;
-    /* border: 1px solid var(--shadow-one); */
-    box-shadow: inset 4px 4px 10px var(--shadow-one), inset -4px -4px 10px var(--shadow-two);
-    /* background-color: red; */
 }
 
 .weekday {
-    font-weight: bold;
-    font-size: var(--text-xs);
-    margin-bottom: 10px;
+    font-weight: 600;
+    font-size: var(--text-p);
+    color: var(--text-gray);
+    padding: 0.75rem 0;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.day-cell {
+    aspect-ratio: 1/1;
+    padding: 0;
+    border: none;
+    background: var(--background-secondary);
+    color: var(--text-drak-gray);
+    cursor: pointer;
+    font-family: var(--font-primary);
+    font-size: var(--text-p);
+    border-radius: 1rem;
+    transition: all 0.2s ease;
+    font-weight: 500;
+}
+
+.day-cell:not(:disabled):hover {
+    background-color: #ffffff;
+    box-shadow: 4px 4px 12px var(--shadow-one), -4px -4px 12px var(--shadow-two);
+    transform: translateY(-1px);
+}
+
+.day-cell:not(:disabled):active {
+    box-shadow: inset 2px 2px 8px var(--shadow-one), inset -2px -2px 8px var(--shadow-two);
+    transform: translateY(0);
+}
+
+.day-cell.outside {
+    color: rgba(110, 127, 141, 0.3);
+    background-color: transparent;
+    cursor: default;
+}
+
+.day-cell.outside:hover {
+    background-color: transparent;
+    box-shadow: none;
+    transform: none;
+}
+
+.day-cell.past:disabled {
+    color: rgba(110, 127, 141, 0.4);
+    opacity: 1;
+    cursor: not-allowed;
+}
+
+.day-cell.selected {
+    background: var(--text-drak-gray);
+    color: #ffffff;
+    font-weight: 600;
+    box-shadow: 6px 6px 16px rgba(110, 127, 141, 0.3), -6px -6px 16px rgba(255, 255, 255, 0.5);
+}
+
+.day-cell.selected:hover:not(:disabled) {
+    background: #5a6d7a;
+    box-shadow: 8px 8px 20px rgba(110, 127, 141, 0.4), -8px -8px 20px rgba(255, 255, 255, 0.6);
 }

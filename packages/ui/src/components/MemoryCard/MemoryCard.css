@@ -1,35 +1,61 @@
-.ui-memory-card{
+.ui-memory-card {
     background-color: var(--background-primary);
-    box-shadow: 8px 8px 20px var(--shadow-one), -8px -8px 20px var(--shadow-two);
+    box-shadow: 4px 4px 10px var(--shadow-one), -4px -4px 10px var(--shadow-two);
     border: none;
     border-radius: var(--radius-universal);
     color: var(--text-drak-gray);
-    padding: 1rem 2rem;
+    padding: 1.5rem 2rem;
     width: 100%;
+    cursor: pointer;
+    transition: all 0.3s ease;
 }
 
-.ui-memory-card h1{
-    color: black;
-    
+.ui-memory-card:hover {
+    box-shadow: 8px 8px 20px var(--shadow-one), -8px -8px 20px var(--shadow-two);
+    transform: translateY(-2px);
 }
 
-.memory-card-header{
+.memory-card-header {
     display: flex;
     flex-direction: row;
     align-items: center;
-    line-height: 0.5rem;
-}
-.memory-card-status{
-    width: 1.5rem;
-    height: 1.5rem;
-    border-radius: 50%;
-    background-color: var(--shadow-one);
-    margin-right: 1rem;
-}
-.memory-card-status.unlocked{
-    background-color: green;
-}
-.memory-card-status.locked{
-    background-color: red;
+    justify-content: space-between;
+    margin-bottom: 1rem;
 }
 
+.memory-card-status {
+    width: 0.75rem;
+    height: 0.75rem;
+    border-radius: 50%;
+    background-color: var(--shadow-one);
+    flex-shrink: 0;
+}
+
+.memory-card-status.unlocked {
+    background-color: #4caf50;
+    box-shadow: 0 0 8px rgba(76, 175, 80, 0.4);
+}
+
+.memory-card-status.locked {
+    background-color: #f44336;
+    box-shadow: 0 0 8px rgba(244, 67, 54, 0.4);
+}
+
+.memory-card-title {
+    font-size: var(--text-h2);
+    color: #000;
+    margin: 0.5rem 0 1rem 0;
+    font-weight: 600;
+}
+
+.memory-card-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.memory-card-info p {
+    margin: 0;
+    font-size: var(--text-p);
+    line-height: 1.4;
+}

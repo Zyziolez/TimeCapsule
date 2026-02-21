@@ -1,5 +1,8 @@
-.ui-button{
+.ui-button {
+    display: flex;
     align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
     font-family: var(--font-primary);
     background-color: var(--background-primary);
     box-shadow: 8px 8px 20px var(--shadow-one), -8px -8px 20px var(--shadow-two);
@@ -7,40 +10,109 @@
     border-radius: var(--radius-universal);
     color: #000;
     letter-spacing: 1px;
+    font-weight: 500;
     cursor: pointer;
-    
+    transition: all 0.2s ease;
 }
-.ui-button:hover {
+
+.ui-button:hover:not(:disabled) {
     background-color: var(--background-secondary);
+    box-shadow: 10px 10px 24px var(--shadow-one), -10px -10px 24px var(--shadow-two);
+    transform: translateY(-1px);
 }
-.primary{
-    /* color: blue; */
+
+.ui-button:active:not(:disabled) {
+    box-shadow: inset 4px 4px 12px var(--shadow-one), inset -4px -4px 12px var(--shadow-two);
+    transform: translateY(0);
 }
-.wide{
+
+.ui-button:focus-visible {
+    outline: 2px solid #000;
+    outline-offset: 2px;
+}
+
+.primary {
+    font-weight: 600;
+}
+
+.primary:hover:not(:disabled) {
+    background-color: #ffffff;
+}
+
+.secondary {
+    background-color: var(--text-drak-gray);
+    color: #ffffff;
+    box-shadow: 8px 8px 20px rgba(110, 127, 141, 0.3), -8px -8px 20px rgba(255, 255, 255, 0.5);
+}
+
+.secondary:hover:not(:disabled) {
+    background-color: #5a6d7a;
+    box-shadow: 10px 10px 24px rgba(110, 127, 141, 0.4), -10px -10px 24px rgba(255, 255, 255, 0.6);
+}
+
+.secondary:active:not(:disabled) {
+    background-color: var(--text-drak-gray);
+    box-shadow: inset 4px 4px 12px rgba(0, 0, 0, 0.2), inset -4px -4px 12px rgba(255, 255, 255, 0.1);
+}
+
+.ui-button.transparent {
+    background-color: transparent !important;
+    box-shadow: none !important;
+    color: inherit;
+    letter-spacing: normal;
+    font-weight: inherit;
+    border: none;
+    border-radius: 0;
+    padding: 0;
+    margin: 0;
+    height: auto;
+    transition: none !important;
+    outline: none !important;
+}
+
+.ui-button.transparent:hover:not(:disabled) {
+    background-color: transparent !important;
+    box-shadow: none !important;
+    transform: none !important;
+    color: inherit;
+}
+
+.ui-button.transparent:active:not(:disabled) {
+    background-color: transparent !important;
+    box-shadow: none !important;
+    transform: none !important;
+}
+
+.ui-button.transparent:focus-visible {
+    outline: none !important;
+}
+
+.xs {
+    padding: 0.35rem 0.75rem;
+    font-size: var(--text-p);
+}
+
+.sm {
+    padding: 0.75rem 1.5rem;
+    font-size: var(--text-p);
+}
+
+.md {
+    padding: 1rem 2rem;
+    font-size: var(--text-h3);
+}
+
+.lg {
+    padding: 1.5rem 3rem;
+    font-size: var(--text-h2);
+}
+
+.wide {
     width: 100%;
 }
-.secondary{
-    background-color: var(--text-drak-gray);
-    color: var(--background-secondary);
-    box-shadow: none;
-}
-.secondary:hover {
-    /* box-shadow: inset 18px 18px 30px var(--shadow-one), inset -18px -18px 30px var(--shadow-two); */
-    background-color: var(--background-primary);
-    color: var(--text-drak-gray);
-}
-.transparent{
-    background-color: transparent;
-    box-shadow: none;
-}
-
-.xs {padding: 0.25rem 0.5rem; font-size: var(--text-p);}
-.sm { padding: 0.75rem 1.5rem; font-size: var(--text-p); }
-.md { padding: 1rem 2rem; font-size: var(--text-h3); }
-.lg { padding: 1.5rem 3rem; font-size: var(--text-h2); }
 
 .ui-button:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
+    opacity: 0.6;
+    cursor: not-allowed;
 }
 

@@ -1,0 +1,25 @@
+.login-form-wrapper{
+    
+}
+.login-form{
+    background-color: var(--background-primary);
+    gap: 1.5rem;
+    padding: 1rem 2rem;
+    display: flex;
+    flex-direction: column;
+    max-width: 30rem;
+    border-radius: var(--radius-universal);
+    box-shadow: 4px 4px 10px var(--shadow-one), -4px -4px 10px var(--shadow-two);
+}
+.login-form-header{
+    display: flex;
+    flex-direction: row;
+    /* align-items: center; */
+    justify-content: space-between;
+    padding: 0 1rem;
+    /* line-height: 250%; */
+    /* vertical-align: middle; */
+}
+.login-form-header h2{
+    /* background-color: red; */
+}

@@ -20,12 +20,11 @@ interface DatePickerProps {
 
 export const DatePicker = ({  selectedStartingDate, onDateChange }: DatePickerProps) => {
     const [displayedDate, setDisplayedDate] = useState(selectedStartingDate)
-    const [selectedDate, setSelectedDate] =  useState<Date>(selectedStartingDate)
     const start = startOfWeek(startOfMonth(displayedDate), { weekStartsOn: 1 })
     const end = endOfWeek(endOfMonth(displayedDate), { weekStartsOn: 1 })
    const allDays = eachDayOfInterval({ start, end })
 
-    const zmienMiesiac= (add: number) => {
+    const changeMonth= (add: number) => {
         // let newMonth =  addMonths(displayedDate, add)
         setDisplayedDate(prev => addMonths(prev, add))
 
@@ -36,17 +35,18 @@ export const DatePicker = ({  selectedStartingDate, onDateChange }: DatePickerPr
 
     const selectDay = (day:Date) => {
         setDisplayedDate(day)
-        
+
     }
 
     return (
-        <div className="datepicker">
+       <div className='datepicker-background' >
+ <div className="datepicker">
             <div className="datepicker-header">
-                <Button label='<' variant='transparent' onClick={() => zmienMiesiac(-1)} size='xs' />
+                <Button label='<' variant='transparent' onClick={() => changeMonth(-1)} size='xs' />
                 {/* <button >cofnij</button> */}
                 <h3>{format(displayedDate, 'MMMM yyyy')}</h3>
                 {/* <button onClick={() => zmienMiesiac(1)} >dalej</button> */}
-                <Button label='>' variant='transparent' onClick={() => zmienMiesiac(1)} size='xs' />
+                <Button label='>' variant='transparent' onClick={() => changeMonth(1)} size='xs' />
 
             </div>
             
@@ -59,8 +59,10 @@ export const DatePicker = ({  selectedStartingDate, onDateChange }: DatePickerPr
                     <button
                         key={day.toString()}
                         onClick={() => selectDay(day)}
+                        disabled={day < new Date()}
                         className={`day-cell 
                             ${!isSameMonth(day, displayedDate) ? 'outside' : ''} 
+                            ${day < new Date() ? 'past' : ''}
                             ${isSameDay(day, displayedDate) ? 'selected' : ''}`
                         }
                     >
@@ -70,5 +72,6 @@ export const DatePicker = ({  selectedStartingDate, onDateChange }: DatePickerPr
             </div>
             <Button label='OK' variant='secondary' size='sm' onClick={() => onDateChange?.(displayedDate)} width='wide' />
         </div>
+       </div>
     )
 }

@@ -24,10 +24,11 @@ interface Event {
 interface CalendarProps {
     selectedStartingDate: Date,
     onDateChange?: (date: Date) => void,
-    formatedDatesArray?: Event[]
+    formatedDatesArray?: Event[],
+    shrink?: number
 }
 
-export const Calendar = ({  selectedStartingDate, onDateChange, formatedDatesArray = [] }: CalendarProps) => {
+export const Calendar = ({  selectedStartingDate, onDateChange, formatedDatesArray = [], shrink = 1 }: CalendarProps) => {
     const [displayedDate, setDisplayedDate] = useState(selectedStartingDate)
     const start = startOfWeek(startOfMonth(displayedDate), { weekStartsOn: 1 })
     const end = endOfWeek(endOfMonth(displayedDate), { weekStartsOn: 1 })
@@ -49,7 +50,7 @@ export const Calendar = ({  selectedStartingDate, onDateChange, formatedDatesArr
         setDisplayedDate(day)
         // onDateChange?.(day)
     }
-    const handleMouseEnter = (e: React.MouseEvent<HTMLButtonElement>,events: Event[]) => {
+    const handleMouseEnter = (e: React.MouseEvent<HTMLDivElement>,events: Event[]) => {
 
         setHoveredDayRect(e.currentTarget.getBoundingClientRect());
         setHoveredDayData(events);
@@ -62,7 +63,7 @@ export const Calendar = ({  selectedStartingDate, onDateChange, formatedDatesArr
     };
 
     return (
-        <div className="calendar">
+        <div className="calendar" style={{transform: `scale(${1/(shrink || 1)})`}}   >
             <div className="calendar-header">
                 <Button label='<' variant='transparent' onClick={() => zmienMiesiac(-1)} size='sm' />
                 {/* <button >cofnij</button> */}
@@ -97,14 +98,18 @@ export const Calendar = ({  selectedStartingDate, onDateChange, formatedDatesArr
                             ${!isSameMonth(day, displayedDate) ? 'outside' : ''} 
                             ${isSameDay(day, displayedDate) ? 'selected' : ''}`
                         }
-                        onMouseEnter={(e) => hasEvent && handleMouseEnter(e, eventsArray)}
+                       
+                        >
+                        <div className='calendar-day-hover area'
+                         onMouseEnter={(e) => hasEvent && handleMouseEnter(e, eventsArray)}
                         onMouseLeave={handleMouseLeave}
                         >
-                        {format(day, 'd')}
-                        <div className='clendar-events-mark' >
-                            {Array.from({ length: specialCount }).map((_, i) => (
-                                <div key={i} className='calendar-event-circle' ></div>
-                            ))}
+                            {format(day, 'd')}
+                            <div className='clendar-events-mark' >
+                                {Array.from({ length: specialCount }).map((_, i) => (
+                                    <div key={i} className='calendar-event-circle' ></div>
+                                ))}
+                            </div>
                         </div>
                     </button>
                 )

@@ -4,7 +4,7 @@
     align-items: flex-start;
     width: 100%;
 }
-.ui-text-input input{
+.ui-text-input textarea{
     font-family: var(--font-primary);
     background-color: var(--background-primary);
     box-shadow: inset 4px 4px 10px var(--shadow-one), inset -4px -4px 10px var(--shadow-two);
@@ -16,7 +16,7 @@
     width: 100%;
     flex: 1;
 }
-.ui-text-input input:focus{
+.ui-text-input textarea:focus{
     outline: none;
     box-shadow: inset 4px 4px 10px var(--shadow-one), inset -4px -4px 10px var(--shadow-two);
 }

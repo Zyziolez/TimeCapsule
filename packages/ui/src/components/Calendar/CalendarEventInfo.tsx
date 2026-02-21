@@ -19,7 +19,7 @@ export const CalendarEventInfo = ({events, position}: CalendarEventInfoProps) =>
     return (
       <div className='event-info-container' style={{
             position: 'fixed',
-            top: position.top - 80, 
+            top: position.top - 120, 
             left: position.left + position.width / 2,
             transform: 'translateX(-50%)',
             zIndex: 9999
